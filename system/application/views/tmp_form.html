@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>コンタクトフォーム</title>
+</head>
+<body>
+<?= $this->load->view('form_header'); ?>
+
+<div id="main">
+    <div class="title_banner">
+        <img src="<?=base_url();?>images/icons/form_tititle.jpg" alt="お問い合わせ" width="580" height="70"/>
+
+
+    </div>
+    <div class="outer_frame">
+        <?=form_open('form/confirm');?>
+        <?=form_hidden('ticket',$this->ticket);?>
+        <table>
+            <tr>
+                <th>名前</th>
+                <td>
+                    <input type="text" name="name" values="<?=$this->validation->name?>" size="30"/>
+                    <?=$this->validation->name_error;?>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    メールアドレス
+                </th>
+                <td>
+                    <input type="text" name="email" value="<?=$this->validation->email;?>" size="30"/>
+                    <?=$this->validation->email_error?>
+                </td>
+            </tr>
+            <th>
+                コメント
+            </th>
+            <td>
+                <textarea name="comment" rows="4" cols="30"><?=$this->validation->comment;?></textarea>
+            </td>
+            <?=$this->validation->comment_error;?>
+            <tr>
+                <td></td>
+                <td class="center">
+                    <input class="button" type="submit" value="確認">
+                </td>
+            </tr>
+        </table>
+        <?= form_close()?>
+
+    </div>
+</div>
+
+<?=$this->load->view('ci_footer')?>
+</body>
+</html>
